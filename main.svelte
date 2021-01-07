@@ -1,7 +1,6 @@
 <script>
 export let OLSKModalViewTitleText;
 export let OLSKPasscodeDispatchContinue;
-export let DEBUG_OLSKPasscodeDataSource = false;
 
 export const modPublic = {};
 
@@ -66,12 +65,3 @@ import OLSKModalView from 'OLSKModalView';
 		</div>
 	</div>
 </OLSKModalView>
-
-<style>
-.OLSKPasscodeBackupNotice {
-	width: 100%;
-	height: 100%;
-
-	background: white;
-}
-</style>
