@@ -14,6 +14,11 @@ window._OLSKPasscode = new OLSKPasscode({
 	target: document.body,
 	props: Object.assign({
 		OLSKModalViewTitleText: Math.random().toString(),
+		OLSKPasscodeDispatchContinue: (function (inputData) {
+			window.TestOLSKPasscodeDispatchContinue.innerHTML = parseInt(window.TestOLSKPasscodeDispatchContinue.innerHTML) + 1;
+
+			window.TestOLSKPasscodeDispatchContinueData.innerHTML = inputData;
+		}),
 	}, Object.fromEntries(Array.from((new window.URLSearchParams(window.location.search)).entries()))),
 });
 </script>
@@ -21,3 +26,9 @@ window._OLSKPasscode = new OLSKPasscode({
 <button id="TestOLSKModalViewShow" onclick="_OLSKPasscode.modPublic.OLSKModalViewShow()">TestOLSKModalViewShow</button>
 
 <button id="TestOLSKModalViewClose" onclick="_OLSKPasscode.modPublic.OLSKModalViewClose()">TestOLSKModalViewClose</button>
+
+<p>
+	<strong>OLSKPasscodeDispatchContinue</strong>
+	<span id="TestOLSKPasscodeDispatchContinue">0</span>
+	<span id="TestOLSKPasscodeDispatchContinueData">undefined</span>
+</p>

@@ -10,6 +10,8 @@ Object.entries({
 	
 	OLSKPasscodeFutileFieldLabel: '.OLSKPasscodeFutileFieldLabel',
 	OLSKPasscodeFutileField: '.OLSKPasscodeFutileField',
+
+	OLSKPasscodeContinueButton: '.OLSKPasscodeContinueButton',
 }).map(function (e) {
 	return global[e.shift()]  = e.pop();
 });
@@ -52,6 +54,10 @@ describe('OLSKPasscode_Access', function () {
 
 		it('shows OLSKPasscodeFutileField', function () {
 			browser.assert.elements(OLSKPasscodeFutileField, 1);
+		});
+
+		it('shows OLSKPasscodeContinueButton', function () {
+			browser.assert.elements(OLSKPasscodeContinueButton, 1);
 		});
 
 	});

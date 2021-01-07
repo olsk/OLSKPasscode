@@ -46,4 +46,52 @@ describe('OLSKPasscode_Misc', function () {
 
 	});
 
+	describe('OLSKPasscodeContinueButton', function test_OLSKPasscodeContinueButton () {
+
+		it('sets disabled', function () {
+			browser.assert.attribute(OLSKPasscodeContinueButton, 'disabled', '');
+		});
+
+		context('filled', function () {
+
+			const item = Math.random().toString();
+			
+			before(function () {
+				return browser.fill(OLSKPasscodePasswordField1, item);
+			});
+			
+			before(function () {
+				return browser.fill(OLSKPasscodePasswordField2, item);
+			});
+			
+			before(function () {
+				return browser.check(OLSKPasscodeFutileField);
+			});
+
+			it('sets disabled', function () {
+				browser.assert.attribute(OLSKPasscodeContinueButton, 'disabled', null);
+			});
+
+			context('click', function () {
+
+				before(function () {
+					browser.assert.text('#TestOLSKPasscodeDispatchContinue', '0');
+					browser.assert.text('#TestOLSKPasscodeDispatchContinueData', 'undefined');
+				});
+
+				before(function () {
+					return browser.pressButton(OLSKPasscodeContinueButton);
+				});
+				
+				it('sends OLSKPasscodeDispatchContinue', function () {
+					browser.assert.text('#TestOLSKPasscodeDispatchContinue', '1');
+					browser.assert.text('#TestOLSKPasscodeDispatchContinueData', item);
+				});
+			
+			});
+		
+		});
+
+	});
+
 });

@@ -2,3 +2,4 @@ OLSKPasscodeBackupNoticeText: Please ensure that all data is backed up safely be
 OLSKPasscodePasswordField1Text: Passphrase or password.
 OLSKPasscodePasswordField2Text: Confirm by re-typing.
 OLSKPasscodeFutileFieldLabelText: I understand that if I forget the password, my data will be lost forever.
+OLSKPasscodeContinueButtonText: Continue

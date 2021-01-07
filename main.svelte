@@ -1,5 +1,6 @@
 <script>
 export let OLSKModalViewTitleText;
+export let OLSKPasscodeDispatchContinue;
 export let DEBUG_OLSKPasscodeDataSource = false;
 
 export const modPublic = {};
@@ -9,6 +10,26 @@ import { OLSKLocalized } from 'OLSKInternational';
 const mod = {
 
 	_OLSKModalView: null,
+
+	// VALUE
+
+	_ValueContinueDisabled: true,
+
+	// DATA
+
+	DataContinueEnabled () {
+		return mod._ValuePassword1 && mod._ValuePassword2 && (mod._ValuePassword1 === mod._ValuePassword2) && mod._ValueFutile;
+	},
+
+	// INTERFACE
+
+	InterfaceFutileFieldDidInput () {
+		mod._ValueContinueDisabled = !mod.DataContinueEnabled();
+	},
+
+	InterfaceContinueButtonDidClick () {
+		OLSKPasscodeDispatchContinue(mod._ValuePassword1);
+	},
 
 	// LIFECYCLE
 
@@ -29,14 +50,18 @@ import OLSKModalView from 'OLSKModalView';
 		<div>
 			<div class="OLSKPasscodeBackupNotice">{ OLSKLocalized('OLSKPasscodeBackupNoticeText') }</div>
 
-			<p><input class="OLSKPasscodePasswordField1" type="password" placeholder={ OLSKLocalized('OLSKPasscodePasswordField1Text') } /></p>
-			<p><input class="OLSKPasscodePasswordField2" type="password" placeholder={ OLSKLocalized('OLSKPasscodePasswordField2Text') } /></p>
+			<p><input class="OLSKPasscodePasswordField1" type="password" placeholder={ OLSKLocalized('OLSKPasscodePasswordField1Text') } bind:value={ mod._ValuePassword1 } /></p>
+			<p><input class="OLSKPasscodePasswordField2" type="password" placeholder={ OLSKLocalized('OLSKPasscodePasswordField2Text') } bind:value={ mod._ValuePassword2 } /></p>
 
 			<p>
 				<label class="OLSKPasscodeFutileFieldLabel">
-					<input class="OLSKPasscodeFutileField" type="checkbox" />
+					<input class="OLSKPasscodeFutileField" type="checkbox" bind:checked={ mod._ValueFutile } on:change={ mod.InterfaceFutileFieldDidInput } />
 					{ OLSKLocalized('OLSKPasscodeFutileFieldLabelText') }
 				</label>
+			</p>
+
+			<p>
+				<button class="OLSKPasscodeContinueButton" disabled={ mod._ValueContinueDisabled } on:click={ mod.InterfaceContinueButtonDidClick }>{ OLSKLocalized('OLSKPasscodeContinueButtonText') }</button>
 			</p>
 		</div>
 	</div>
