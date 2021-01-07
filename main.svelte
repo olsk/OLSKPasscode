@@ -5,6 +5,7 @@ export let OLSKPasscodeDispatchContinue;
 export const modPublic = {};
 
 import { OLSKLocalized } from 'OLSKInternational';
+import OLSKCrypto from 'OLSKCrypto';
 
 const mod = {
 
@@ -26,8 +27,10 @@ const mod = {
 		mod._ValueContinueDisabled = !mod.DataContinueEnabled();
 	},
 
-	InterfaceContinueButtonDidClick () {
-		OLSKPasscodeDispatchContinue(mod._ValuePassword1);
+	async InterfaceContinueButtonDidClick () {
+		localStorage.setItem('OLSK_PASSCODE_HASH', await OLSKCrypto.OLSKCryptoPBKDF2Hash(mod._ValuePassword1));
+
+		OLSKPasscodeDispatchContinue();
 	},
 
 	// LIFECYCLE

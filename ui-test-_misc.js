@@ -76,7 +76,6 @@ describe('OLSKPasscode_Misc', function () {
 
 				before(function () {
 					browser.assert.text('#TestOLSKPasscodeDispatchContinue', '0');
-					browser.assert.text('#TestOLSKPasscodeDispatchContinueData', 'undefined');
 				});
 
 				before(function () {
@@ -85,7 +84,10 @@ describe('OLSKPasscode_Misc', function () {
 				
 				it('sends OLSKPasscodeDispatchContinue', function () {
 					browser.assert.text('#TestOLSKPasscodeDispatchContinue', '1');
-					browser.assert.text('#TestOLSKPasscodeDispatchContinueData', item);
+				});
+
+				it('sets OLSK_PASSCODE_HASH', function () {
+					browser.assert.evaluate('localStorage.getItem("OLSK_PASSCODE_HASH")', require('OLSKCrypto').OLSKCryptoPBKDF2Hash(item));
 				});
 			
 			});
