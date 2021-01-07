@@ -7,6 +7,9 @@ Object.entries({
 	
 	OLSKPasscodePasswordField1: '.OLSKPasscodePasswordField1',
 	OLSKPasscodePasswordField2: '.OLSKPasscodePasswordField2',
+	
+	OLSKPasscodeFutileFieldLabel: '.OLSKPasscodeFutileFieldLabel',
+	OLSKPasscodeFutileField: '.OLSKPasscodeFutileField',
 }).map(function (e) {
 	return global[e.shift()]  = e.pop();
 });
@@ -41,6 +44,14 @@ describe('OLSKPasscode_Access', function () {
 
 		it('shows OLSKPasscodePasswordField2', function () {
 			browser.assert.elements(OLSKPasscodePasswordField2, 1);
+		});
+
+		it('shows OLSKPasscodeFutileFieldLabel', function () {
+			browser.assert.elements(OLSKPasscodeFutileFieldLabel, 1);
+		});
+
+		it('shows OLSKPasscodeFutileField', function () {
+			browser.assert.elements(OLSKPasscodeFutileField, 1);
 		});
 
 	});

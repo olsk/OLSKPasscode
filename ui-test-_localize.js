@@ -30,6 +30,10 @@ kDefaultRoute.OLSKRouteLanguageCodes.forEach(function (OLSKRoutingLanguage) {
 			browser.assert.attribute(OLSKPasscodePasswordField2, 'placeholder', uLocalized('OLSKPasscodePasswordField2Text'));
 		});
 
+		it('localizes OLSKPasscodeFutileFieldLabel', function () {
+			browser.assert.text(OLSKPasscodeFutileFieldLabel, uLocalized('OLSKPasscodeFutileFieldLabelText'));
+		});
+
 	});
 
 });

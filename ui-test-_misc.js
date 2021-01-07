@@ -38,4 +38,12 @@ describe('OLSKPasscode_Misc', function () {
 
 	});
 
+	describe('OLSKPasscodeFutileField', function test_OLSKPasscodeFutileField () {
+
+		it('sets type', function () {
+			browser.assert.attribute(OLSKPasscodeFutileField, 'type', 'checkbox');
+		});
+
+	});
+
 });

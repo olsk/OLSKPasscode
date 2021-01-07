@@ -31,6 +31,13 @@ import OLSKModalView from 'OLSKModalView';
 
 			<p><input class="OLSKPasscodePasswordField1" type="password" placeholder={ OLSKLocalized('OLSKPasscodePasswordField1Text') } /></p>
 			<p><input class="OLSKPasscodePasswordField2" type="password" placeholder={ OLSKLocalized('OLSKPasscodePasswordField2Text') } /></p>
+
+			<p>
+				<label class="OLSKPasscodeFutileFieldLabel">
+					<input class="OLSKPasscodeFutileField" type="checkbox" />
+					{ OLSKLocalized('OLSKPasscodeFutileFieldLabelText') }
+				</label>
+			</p>
 		</div>
 	</div>
 </OLSKModalView>
