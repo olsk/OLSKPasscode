@@ -1,0 +1,23 @@
+<%
+locals.OLSKPageAssets = [
+	'__compiled/ui-style.css',
+];
+locals.OLSKPagePublicConstants = {
+	OLSKSharedPageCurrentLanguage,
+};
+%>
+
+<script src="/<%= OLSKSharedPageControllerSlug %>/__compiled/ui-behaviour.js"></script>
+
+<script>
+window._OLSKPasscode = new OLSKPasscode({
+	target: document.body,
+	props: Object.assign({
+		OLSKModalViewTitleText: Math.random().toString(),
+	}, Object.fromEntries(Array.from((new window.URLSearchParams(window.location.search)).entries()))),
+});
+</script>
+
+<button id="TestOLSKModalViewShow" onclick="_OLSKPasscode.modPublic.OLSKModalViewShow()">TestOLSKModalViewShow</button>
+
+<button id="TestOLSKModalViewClose" onclick="_OLSKPasscode.modPublic.OLSKModalViewClose()">TestOLSKModalViewClose</button>

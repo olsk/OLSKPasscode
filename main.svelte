@@ -1,0 +1,40 @@
+<script>
+export let OLSKModalViewTitleText;
+export let DEBUG_OLSKPasscodeDataSource = false;
+
+export const modPublic = {};
+
+import { OLSKLocalized } from 'OLSKInternational';
+
+const mod = {
+
+	_OLSKModalView: null,
+
+	// LIFECYCLE
+
+	LifecycleModuleDidMount() {
+		Object.assign(modPublic, mod._OLSKModalView.modPublic);
+	},
+
+};
+
+import { onMount } from 'svelte';
+onMount(mod.LifecycleModuleDidMount);
+
+import OLSKModalView from 'OLSKModalView';
+</script>
+
+<OLSKModalView bind:this={ mod._OLSKModalView } OLSKModalViewTitleText={ OLSKModalViewTitleText }>
+	<div class="OLSKPasscode">
+		<div class="OLSKPasscodeBackupNotice">{ OLSKLocalized('OLSKPasscodeBackupNoticeText') }</div>
+	</div>
+</OLSKModalView>
+
+<style>
+.OLSKPasscodeBackupNotice {
+	width: 100%;
+	height: 100%;
+
+	background: white;
+}
+</style>

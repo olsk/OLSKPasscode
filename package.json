@@ -1,0 +1,7 @@
+{
+  "name": "OLSKPasscode",
+  "main": "main.svelte",
+  "dependencies": {
+    "OLSKModalView": "olsk/OLSKModalView"
+  }
+}
