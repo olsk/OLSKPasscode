@@ -22,4 +22,20 @@ describe('OLSKPasscode_Misc', function () {
 
 	});
 
+	describe('OLSKPasscodePasswordField1', function test_OLSKPasscodePasswordField1 () {
+
+		it('sets type', function () {
+			browser.assert.attribute(OLSKPasscodePasswordField1, 'type', 'password');
+		});
+
+	});
+
+	describe('OLSKPasscodePasswordField2', function test_OLSKPasscodePasswordField2 () {
+
+		it('sets type', function () {
+			browser.assert.attribute(OLSKPasscodePasswordField2, 'type', 'password');
+		});
+
+	});
+
 });

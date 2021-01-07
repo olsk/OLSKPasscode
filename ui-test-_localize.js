@@ -22,6 +22,14 @@ kDefaultRoute.OLSKRouteLanguageCodes.forEach(function (OLSKRoutingLanguage) {
 			browser.assert.text(OLSKPasscodeBackupNotice, uLocalized('OLSKPasscodeBackupNoticeText'));
 		});
 
+		it('localizes OLSKPasscodePasswordField1', function () {
+			browser.assert.attribute(OLSKPasscodePasswordField1, 'placeholder', uLocalized('OLSKPasscodePasswordField1Text'));
+		});
+
+		it('localizes OLSKPasscodePasswordField2', function () {
+			browser.assert.attribute(OLSKPasscodePasswordField2, 'placeholder', uLocalized('OLSKPasscodePasswordField2Text'));
+		});
+
 	});
 
 });

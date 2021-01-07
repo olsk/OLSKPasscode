@@ -1,9 +1,12 @@
 const kDefaultRoute = require('./controller.js').OLSKControllerRoutes().shift();
 
 Object.entries({
-	OLSKPasscode: '.OLSKPasscode',
+	OLSKPasscode: '.OLSKStandardViewBody .OLSKPasscode',
 	
-	OLSKPasscodeBackupNotice: '.OLSKStandardViewBody .OLSKPasscodeBackupNotice',
+	OLSKPasscodeBackupNotice: '.OLSKPasscodeBackupNotice',
+	
+	OLSKPasscodePasswordField1: '.OLSKPasscodePasswordField1',
+	OLSKPasscodePasswordField2: '.OLSKPasscodePasswordField2',
 }).map(function (e) {
 	return global[e.shift()]  = e.pop();
 });
@@ -30,6 +33,14 @@ describe('OLSKPasscode_Access', function () {
 
 		it('shows OLSKPasscodeBackupNotice', function () {
 			browser.assert.elements(OLSKPasscodeBackupNotice, 1);
+		});
+
+		it('shows OLSKPasscodePasswordField1', function () {
+			browser.assert.elements(OLSKPasscodePasswordField1, 1);
+		});
+
+		it('shows OLSKPasscodePasswordField2', function () {
+			browser.assert.elements(OLSKPasscodePasswordField2, 1);
 		});
 
 	});

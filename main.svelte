@@ -26,7 +26,12 @@ import OLSKModalView from 'OLSKModalView';
 
 <OLSKModalView bind:this={ mod._OLSKModalView } OLSKModalViewTitleText={ OLSKModalViewTitleText }>
 	<div class="OLSKPasscode">
-		<div class="OLSKPasscodeBackupNotice">{ OLSKLocalized('OLSKPasscodeBackupNoticeText') }</div>
+		<div>
+			<div class="OLSKPasscodeBackupNotice">{ OLSKLocalized('OLSKPasscodeBackupNoticeText') }</div>
+
+			<p><input class="OLSKPasscodePasswordField1" type="password" placeholder={ OLSKLocalized('OLSKPasscodePasswordField1Text') } /></p>
+			<p><input class="OLSKPasscodePasswordField2" type="password" placeholder={ OLSKLocalized('OLSKPasscodePasswordField2Text') } /></p>
+		</div>
 	</div>
 </OLSKModalView>
 
