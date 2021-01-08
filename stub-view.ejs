@@ -1,11 +1,24 @@
 <%
 locals.OLSKPageAssets = [
 	'__compiled/ui-style.css',
+
+	'/node_modules/launchlet/__compiled/launchlet.css',
+	'/node_modules/launchlet/__compiled/launchlet.js',
 ];
 locals.OLSKPagePublicConstants = {
 	OLSKSharedPageCurrentLanguage,
 };
 %>
+
+<script type="text/javascript" src="/node_modules/OLSKInternational/main.js"></script>
+<script type="text/javascript">
+	window.OLSKLocalized = function(translationConstant) {
+		return OLSKInternational.OLSKInternationalLocalizedString(translationConstant, <%- JSON.stringify(OLSKLocalizedStringKeys().reduce(function(map, e) {
+				map[e] = OLSKLocalized(e);
+				return map;
+			}, {})) %>);
+	};
+</script>
 
 <script src="/<%= OLSKSharedPageControllerSlug %>/__compiled/ui-behaviour.js"></script>
 
@@ -19,11 +32,25 @@ window._OLSKPasscode = new OLSKPasscode({
 		}),
 	}, Object.fromEntries(Array.from((new window.URLSearchParams(window.location.search)).entries()))),
 });
+
+function InterfaceLauncherButtonDidClick () {
+	window.Launchlet.LCHSingletonCreate({
+		LCHOptionRecipes: _OLSKPasscode.modPublic.OLSKPasscodeRecipes({
+			OLSKLocalized: window.OLSKLocalized,
+			ParamMod: {},
+			ParamSpecUI: true,
+		}),
+	});
+};
 </script>
 
 <button id="TestOLSKModalViewShow" onclick="_OLSKPasscode.modPublic.OLSKModalViewShow()">TestOLSKModalViewShow</button>
 
 <button id="TestOLSKModalViewClose" onclick="_OLSKPasscode.modPublic.OLSKModalViewClose()">TestOLSKModalViewClose</button>
+
+<p>
+	<button class="OLSKAppToolbarLauncherButton" onclick="InterfaceLauncherButtonDidClick()">Launcher</button>
+</p>
 
 <p>
 	<strong>OLSKPasscodeDispatchContinue</strong>

@@ -6,6 +6,9 @@ export const modPublic = {};
 
 import { OLSKLocalized } from 'OLSKInternational';
 import OLSKCrypto from 'OLSKCrypto';
+import OLSKPasscodeLogic from './ui-logic.js';
+
+Object.assign(modPublic, OLSKPasscodeLogic);
 
 const mod = {
 

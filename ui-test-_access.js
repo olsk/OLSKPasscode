@@ -26,6 +26,10 @@ describe('OLSKPasscode_Access', function () {
 		browser.assert.elements(OLSKPasscode, 0);
 	});
 
+	it('shows OLSKPasscodeLauncherFakeItemProxy', function () {
+		return browser.assert.OLSKLauncherItems('OLSKPasscodeLauncherFakeItemProxy', 1);
+	});
+
 	context('OLSKModalViewShow', function () {
 
 		before(function () {

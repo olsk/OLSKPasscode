@@ -5,5 +5,9 @@
     "OLSKModalView": "olsk/OLSKModalView",
     "OLSKCrypto": "olsk/OLSKCrypto",
     "OLSKLocalStorage": "olsk/OLSKLocalStorage"
+  },
+  "devDependencies": {
+    "launchlet": "latest",
+    "OLSKInternational": "olsk/OLSKInternational"
   }
 }
