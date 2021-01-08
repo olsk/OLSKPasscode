@@ -7,6 +7,28 @@ const mod = {
 		};
 	},
 
+	OLSKPasscodeLauncherItemConfigure  (params) {
+		if (typeof params !== 'object' || params === null) {
+			throw new Error('OLSKErrorInputNotValid');
+		}
+
+		if (typeof params.ParamMod !== 'object' || params.ParamMod === null) {
+			throw new Error('OLSKErrorInputNotValid');
+		}
+		
+		if (typeof params.OLSKLocalized !== 'function') {
+			throw new Error('OLSKErrorInputNotValid');
+		}
+
+		return {
+			LCHRecipeSignature: 'OLSKPasscodeLauncherItemConfigure',
+			LCHRecipeName: params.OLSKLocalized('OLSKPasscodeLauncherItemConfigureText'),
+			LCHRecipeCallback () {
+				return params.ParamMod._OLSKPasscode.modPublic.OLSKModalViewShow();
+			},
+		};
+	},
+
 	OLSKPasscodeRecipes (params) {
 		if (typeof params !== 'object' || params === null) {
 			throw new Error('OLSKErrorInputNotValid');
@@ -22,6 +44,7 @@ const mod = {
 
 		return [
 			mod.OLSKPasscodeLauncherFakeItemProxy(),
+			mod.OLSKPasscodeLauncherItemConfigure(params),
 		].filter(function (e) {
 			if (params.ParamSpecUI) {
 				return true;

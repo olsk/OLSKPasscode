@@ -38,6 +38,10 @@ kDefaultRoute.OLSKRouteLanguageCodes.forEach(function (OLSKRoutingLanguage) {
 			browser.assert.text(OLSKPasscodeContinueButton, uLocalized('OLSKPasscodeContinueButtonText'));
 		});
 
+		it('localizes OLSKPasscodeLauncherItemConfigure', function () {
+			return browser.assert.OLSKLauncherItemText('OLSKPasscodeLauncherItemConfigure', uLocalized('OLSKPasscodeLauncherItemConfigureText'));
+		});
+
 	});
 
 });

@@ -26,6 +26,67 @@ describe('OLSKPasscodeLauncherFakeItemProxy', function test_OLSKPasscodeLauncher
 
 });
 
+describe('OLSKPasscodeLauncherItemConfigure', function test_OLSKPasscodeLauncherItemConfigure() {
+
+	const _OLSKPasscodeLauncherItemConfigure = function (inputData = {}) {
+		return mod.OLSKPasscodeLauncherItemConfigure(Object.assign({
+			ParamMod: {},
+			OLSKLocalized: uLocalized,
+		}, inputData))
+	}
+
+	it('throws if not object', function () {
+		throws(function () {
+			mod.OLSKPasscodeLauncherItemConfigure(null);
+		}, /OLSKErrorInputNotValid/);
+	});
+
+	it('throws if OLSKLocalized not function', function () {
+		throws(function () {
+			_OLSKPasscodeLauncherItemConfigure({
+				OLSKLocalized: null,
+			});
+		}, /OLSKErrorInputNotValid/);
+	});
+
+	it('throws if ParamMod not object', function () {
+		throws(function () {
+			_OLSKPasscodeLauncherItemConfigure({
+				ParamMod: null,
+			});
+		}, /OLSKErrorInputNotValid/);
+	});
+
+	it('returns object', function () {
+		const item = _OLSKPasscodeLauncherItemConfigure();
+		deepEqual(item, {
+			LCHRecipeSignature: 'OLSKPasscodeLauncherItemConfigure',
+			LCHRecipeName: uLocalized('OLSKPasscodeLauncherItemConfigureText'),
+			LCHRecipeCallback: item.LCHRecipeCallback,
+		});
+	});
+
+	context('LCHRecipeCallback', function () {
+		
+		it('calls _OLSKPasscode.modPublic.OLSKModalViewShow', function () {
+			const OLSKModalViewShow = Math.random().toString();
+			deepEqual(_OLSKPasscodeLauncherItemConfigure({
+				ParamMod: {
+					_OLSKPasscode: {
+						modPublic: {
+							OLSKModalViewShow: (function () {
+								return OLSKModalViewShow;
+							}),
+						},
+					},
+				},
+			}).LCHRecipeCallback(), OLSKModalViewShow);
+		});
+
+	});
+
+});
+
 describe('OLSKPasscodeRecipes', function test_OLSKPasscodeRecipes() {
 
 	const _OLSKPasscodeRecipes = function (inputData = {}) {

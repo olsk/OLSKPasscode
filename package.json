@@ -8,6 +8,7 @@
   },
   "devDependencies": {
     "launchlet": "latest",
-    "OLSKInternational": "olsk/OLSKInternational"
+    "OLSKInternational": "olsk/OLSKInternational",
+    "OLSKString": "olsk/OLSKString"
   }
 }

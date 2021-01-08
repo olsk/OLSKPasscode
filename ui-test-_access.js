@@ -30,6 +30,10 @@ describe('OLSKPasscode_Access', function () {
 		return browser.assert.OLSKLauncherItems('OLSKPasscodeLauncherFakeItemProxy', 1);
 	});
 
+	it('shows OLSKPasscodeLauncherItemConfigure', function () {
+		return browser.assert.OLSKLauncherItems('OLSKPasscodeLauncherItemConfigure', 1);
+	});
+
 	context('OLSKModalViewShow', function () {
 
 		before(function () {
@@ -74,6 +78,18 @@ describe('OLSKPasscode_Access', function () {
 
 		it('hides OLSKPasscode', function () {
 			browser.assert.elements(OLSKPasscode, 0);
+		});
+		
+	});
+
+	context('OLSKPasscodeLauncherItemConfigure', function () {
+
+		before(function () {
+			return browser.OLSKLauncherRun('OLSKPasscodeLauncherItemConfigure');
+		});
+
+		it('shows OLSKPasscode', function () {
+			browser.assert.elements(OLSKPasscode, 1);
 		});
 		
 	});

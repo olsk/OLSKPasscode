@@ -5,51 +5,51 @@ locals.OLSKPageAssets = [
 	'/node_modules/launchlet/__compiled/launchlet.css',
 	'/node_modules/launchlet/__compiled/launchlet.js',
 ];
+locals._OLSKPageAssetFolder = 'node_modules';
 locals.OLSKPagePublicConstants = {
 	OLSKSharedPageCurrentLanguage,
 };
+locals.OLSKPagePublicLocalizedStringKeys = OLSKLocalizedStringKeys();
 %>
-
-<script type="text/javascript" src="/node_modules/OLSKInternational/main.js"></script>
-<script type="text/javascript">
-	window.OLSKLocalized = function(translationConstant) {
-		return OLSKInternational.OLSKInternationalLocalizedString(translationConstant, <%- JSON.stringify(OLSKLocalizedStringKeys().reduce(function(map, e) {
-				map[e] = OLSKLocalized(e);
-				return map;
-			}, {})) %>);
-	};
-</script>
 
 <script src="/<%= OLSKSharedPageControllerSlug %>/__compiled/ui-behaviour.js"></script>
 
 <script>
-window._OLSKPasscode = new OLSKPasscode({
-	target: document.body,
-	props: Object.assign({
-		OLSKModalViewTitleText: Math.random().toString(),
-		OLSKPasscodeDispatchContinue: (function () {
-			window.TestOLSKPasscodeDispatchContinue.innerHTML = parseInt(window.TestOLSKPasscodeDispatchContinue.innerHTML) + 1;
-		}),
-	}, Object.fromEntries(Array.from((new window.URLSearchParams(window.location.search)).entries()))),
-});
+const mod = {
 
-function InterfaceLauncherButtonDidClick () {
-	window.Launchlet.LCHSingletonCreate({
-		LCHOptionRecipes: _OLSKPasscode.modPublic.OLSKPasscodeRecipes({
-			OLSKLocalized: window.OLSKLocalized,
-			ParamMod: {},
-			ParamSpecUI: true,
-		}),
-	});
+	_OLSKPasscode: new OLSKPasscode({
+		target: document.body,
+		props: Object.assign({
+			OLSKModalViewTitleText: Math.random().toString(),
+			OLSKPasscodeDispatchContinue: (function () {
+				window.TestOLSKPasscodeDispatchContinue.innerHTML = parseInt(window.TestOLSKPasscodeDispatchContinue.innerHTML) + 1;
+			}),
+		}, Object.fromEntries(Array.from((new window.URLSearchParams(window.location.search)).entries()))),
+	}),
+
+	// INTERFACE
+
+	InterfaceLauncherButtonDidClick () {
+		window.Launchlet.LCHSingletonCreate({
+			LCHOptionRecipes: mod._OLSKPasscode.modPublic.OLSKPasscodeRecipes({
+				OLSKLocalized: window.OLSKLocalized,
+				ParamMod: mod,
+				ParamSpecUI: true,
+			}),
+		});
+	},
+
 };
+
+window.mod = mod;
 </script>
 
-<button id="TestOLSKModalViewShow" onclick="_OLSKPasscode.modPublic.OLSKModalViewShow()">TestOLSKModalViewShow</button>
+<button id="TestOLSKModalViewShow" onclick="mod._OLSKPasscode.modPublic.OLSKModalViewShow()">TestOLSKModalViewShow</button>
 
-<button id="TestOLSKModalViewClose" onclick="_OLSKPasscode.modPublic.OLSKModalViewClose()">TestOLSKModalViewClose</button>
+<button id="TestOLSKModalViewClose" onclick="mod._OLSKPasscode.modPublic.OLSKModalViewClose()">TestOLSKModalViewClose</button>
 
 <p>
-	<button class="OLSKAppToolbarLauncherButton" onclick="InterfaceLauncherButtonDidClick()">Launcher</button>
+	<button class="OLSKAppToolbarLauncherButton" onclick="mod.InterfaceLauncherButtonDidClick()">Launcher</button>
 </p>
 
 <p>
