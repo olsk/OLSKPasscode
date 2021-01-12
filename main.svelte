@@ -41,6 +41,9 @@ const mod = {
 
 	async ControlSet (inputData) {
 		localStorage.setItem('OLSK_PASSCODE_HASH', OLSKCrypto.OLSKCryptoPBKDF2Hash(await OLSKCrypto.OLSKCryptoPBKDF2Key(inputData)));
+
+		mod._ValuePassword1 = mod._ValuePassword2 = '';
+		mod._ValueFutile = false;
 	},
 
 	// LIFECYCLE

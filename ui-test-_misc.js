@@ -87,6 +87,26 @@ describe('OLSKPasscode_Misc', function () {
 				});
 			
 			});
+
+			context('re-open', function () {
+
+				before(function () {
+					return browser.pressButton('#TestOLSKModalViewShow');
+				});
+				
+				it('clears OLSKPasscodePasswordField1', function () {
+					browser.assert.input(OLSKPasscodePasswordField1, '');
+				});
+				
+				it('clears OLSKPasscodePasswordField2', function () {
+					browser.assert.input(OLSKPasscodePasswordField2, '');
+				});
+				
+				it('clears OLSKPasscodeFutileField', function () {
+					browser.assert.OLSKIsChecked(OLSKPasscodeFutileField, false);
+				});
+			
+			});
 		
 		});
 
