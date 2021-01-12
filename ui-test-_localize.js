@@ -42,6 +42,14 @@ kDefaultRoute.OLSKRouteLanguageCodes.forEach(function (OLSKRoutingLanguage) {
 			return browser.assert.OLSKLauncherItemText('OLSKPasscodeLauncherItemConfigure', uLocalized('OLSKPasscodeLauncherItemConfigureText'));
 		});
 
+		context('OLSKModalView', function () {
+			
+			it('binds OLSKModalViewTitleText', function () {
+				return browser.assert.text('.OLSKModalViewTitle', uLocalized('OLSKPasscodeLauncherItemConfigureText'));
+			});
+		
+		});
+
 	});
 
 });

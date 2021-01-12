@@ -1,5 +1,4 @@
 <script>
-export let OLSKModalViewTitleText;
 export let OLSKPasscodeDispatchContinue;
 
 export const modPublic = {};
@@ -50,7 +49,7 @@ onMount(mod.LifecycleModuleDidMount);
 import OLSKModalView from 'OLSKModalView';
 </script>
 
-<OLSKModalView bind:this={ mod._OLSKModalView } OLSKModalViewTitleText={ OLSKModalViewTitleText }>
+<OLSKModalView bind:this={ mod._OLSKModalView } OLSKModalViewTitleText={ OLSKLocalized('OLSKPasscodeLauncherItemConfigureText') }>
 	<div class="OLSKPasscode">
 		<div>
 			<div class="OLSKPasscodeBackupNotice">{ OLSKLocalized('OLSKPasscodeBackupNoticeText') }</div>

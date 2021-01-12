@@ -20,7 +20,6 @@ const mod = {
 	_OLSKPasscode: new OLSKPasscode({
 		target: document.body,
 		props: Object.assign({
-			OLSKModalViewTitleText: Math.random().toString(),
 			OLSKPasscodeDispatchContinue: (function () {
 				window.TestOLSKPasscodeDispatchContinue.innerHTML = parseInt(window.TestOLSKPasscodeDispatchContinue.innerHTML) + 1;
 			}),
