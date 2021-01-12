@@ -10,6 +10,14 @@ describe('OLSKPasscode_Misc', function () {
 		return browser.pressButton('#TestOLSKModalViewShow');
 	});
 
+	describe('OLSKPasscode', function test_OLSKPasscode () {
+
+		it('classes OLSKDecor', function () {
+			browser.assert.hasClass(OLSKPasscode, 'OLSKDecor');
+		});
+
+	});
+
 	describe('OLSKPasscodePasswordField1', function test_OLSKPasscodePasswordField1 () {
 
 		it('sets type', function () {

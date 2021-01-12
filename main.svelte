@@ -50,7 +50,7 @@ import OLSKModalView from 'OLSKModalView';
 </script>
 
 <OLSKModalView bind:this={ mod._OLSKModalView } OLSKModalViewTitleText={ OLSKLocalized('OLSKPasscodeLauncherItemConfigureText') }>
-	<div class="OLSKPasscode">
+	<div class="OLSKPasscode OLSKDecor">
 		<div>
 			<div class="OLSKPasscodeBackupNotice">{ OLSKLocalized('OLSKPasscodeBackupNoticeText') }</div>
 
