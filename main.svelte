@@ -29,10 +29,18 @@ const mod = {
 		mod._ValueContinueDisabled = !mod.DataContinueEnabled();
 	},
 
-	async InterfaceContinueButtonDidClick () {
-		localStorage.setItem('OLSK_PASSCODE_HASH', OLSKCrypto.OLSKCryptoPBKDF2Hash(await OLSKCrypto.OLSKCryptoPBKDF2Key(mod._ValuePassword1)));
+	InterfaceContinueButtonDidClick () {
+		mod.ControlSet(mod._ValuePassword1);
+
+		mod._OLSKModalView.modPublic.OLSKModalViewClose();
 
 		OLSKPasscodeDispatchContinue();
+	},
+
+	// CONTROL
+
+	async ControlSet (inputData) {
+		localStorage.setItem('OLSK_PASSCODE_HASH', OLSKCrypto.OLSKCryptoPBKDF2Hash(await OLSKCrypto.OLSKCryptoPBKDF2Key(inputData)));
 	},
 
 	// LIFECYCLE

@@ -94,4 +94,30 @@ describe('OLSKPasscode_Access', function () {
 		
 	});
 
+	describe('OLSKPasscodeContinueButton', function test_OLSKPasscodeContinueButton () {
+
+		const item = Math.random().toString();
+
+		before(function () {
+			return browser.fill(OLSKPasscodePasswordField1, item);
+		});
+		
+		before(function () {
+			return browser.fill(OLSKPasscodePasswordField2, item);
+		});
+		
+		before(function () {
+			return browser.check(OLSKPasscodeFutileField);
+		});
+
+		before(function () {
+			return browser.pressButton(OLSKPasscodeContinueButton);
+		});
+
+		it('hides OLSKPasscode', function () {
+			browser.assert.elements(OLSKPasscode, 0);
+		});
+
+	});
+
 });
