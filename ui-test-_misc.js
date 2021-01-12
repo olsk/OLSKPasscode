@@ -82,8 +82,8 @@ describe('OLSKPasscode_Misc', function () {
 					browser.assert.text('#TestOLSKPasscodeDispatchContinue', '1');
 				});
 
-				it('sets OLSK_PASSCODE_HASH', function () {
-					browser.assert.evaluate('localStorage.getItem("OLSK_PASSCODE_HASH")', require('OLSKCrypto').OLSKCryptoPBKDF2Hash(item));
+				it('sets OLSK_PASSCODE_HASH', async function () {
+					browser.assert.evaluate('localStorage.getItem("OLSK_PASSCODE_HASH")', require('OLSKCrypto').OLSKCryptoPBKDF2Hash(await require('OLSKCrypto').OLSKCryptoPBKDF2Key(item)));
 				});
 			
 			});

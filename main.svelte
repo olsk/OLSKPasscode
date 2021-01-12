@@ -30,7 +30,7 @@ const mod = {
 	},
 
 	async InterfaceContinueButtonDidClick () {
-		localStorage.setItem('OLSK_PASSCODE_HASH', await OLSKCrypto.OLSKCryptoPBKDF2Hash(mod._ValuePassword1));
+		localStorage.setItem('OLSK_PASSCODE_HASH', OLSKCrypto.OLSKCryptoPBKDF2Hash(await OLSKCrypto.OLSKCryptoPBKDF2Key(mod._ValuePassword1)));
 
 		OLSKPasscodeDispatchContinue();
 	},
