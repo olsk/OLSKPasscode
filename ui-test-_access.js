@@ -13,7 +13,7 @@ Object.entries({
 
 	OLSKPasscodeContinueButton: '.OLSKPasscodeContinueButton',
 }).map(function (e) {
-	return global[e.shift()]  = e.pop();
+	return global[e.shift()] = e.pop();
 });
 
 describe('OLSKPasscode_Access', function () {
